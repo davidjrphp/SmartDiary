@@ -4,7 +4,7 @@
 		<div id="block_bg" class="block">
 			<div class="navbar navbar-inner block-header">
 				<div id="" class="muted pull-left">
-					<h4><i class="icon-plus-sign"></i> Add Event</h4>
+					<h4><i class="icon-plus-sign"></i> Add New Event</h4>
 				</div>
 			</div>
 			<?php

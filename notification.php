@@ -7,7 +7,7 @@ if (isset($_GET["id"])) {
 ?>
 
 <body>
-	<?php include('navbar.php'); ?>
+	<?php include('navbar.php'); ?><br><br>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<?php include('calendar_sidebar.php'); ?>

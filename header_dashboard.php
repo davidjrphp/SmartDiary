@@ -3,11 +3,11 @@
 
 <head>
     <title>SmartDiary</title>
-    <meta name="description" content="Diary Management System">
+    <meta name="description" content="SmartDiary">
     <meta name="author" content="Elifree">
     <meta charset="UTF-8">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous"> -->
     <link href="admin/images/favicon.ico" rel="icon" type="image">
     <link href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="admin/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -25,8 +25,8 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     <!-- Include Bootstrap and jQuery scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Xcu4kOFpF/25aO5x0F5F5GkZqq5zF5g4F5CX5x0F5F5Z9v3" crossorigin="anonymous"></script> -->
     <script src="admin/vendors/jquery-1.9.1.min.js"></script>
     <script src="admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- data table -->

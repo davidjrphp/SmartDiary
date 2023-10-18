@@ -1,10 +1,10 @@
 body { 
-	background: url() no-repeat center center fixed;
+	background: url("../../images/moonlight.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover !important; 
 	-moz-background-size: cover !important; 
 	-o-background-size: cover !important; 
 	background-size: cover !important;
-	background:rgba(16, 1, 18, 0.945); 
+	/* background:rgba(16, 1, 18, 0.945);  */
 	
 }
 #login .form-signin .form-signin-heading, #login .form-signin .checkbox {
@@ -17,7 +17,7 @@ body {
 }
 body{
 	font-family: 'TR Century Gothic', Arial, sans-serif !important;
-	background:rgba(16, 1, 18, 0.945);
+	/* background:rgba(16, 1, 18, 0.945); */
 }
 @font-face
 {
@@ -33,7 +33,7 @@ font-family: 'TR Century Gothic';
 
 }
 body{
-    background-color:rgba(16, 1, 18, 0.945);
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 .chmsc{
 	font-weight: bold;
@@ -47,10 +47,11 @@ body{
 	margin:25px auto;
 }
 .title h3 {
-    color: #eee;
+    color: #72a1e8;
     padding: 20px;
 	margin:auto 0;
 	font-size: 30px;
+	font-weight: bold;
 	text-align: left;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 }

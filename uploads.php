@@ -2,18 +2,16 @@
 <?php $get_id = $_GET['id']; ?>
 
 <body>
-	<?php include('navbar.php'); ?>
+	<?php include('navbar.php'); ?><br><br>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<?php include('calendar_sidebar.php'); ?>
 			<div class="span6" id="content">
 				<div class="row-fluid">
 					<!-- breadcrumb -->
-
-
 					<ul class="breadcrumb">
 						<li><a href="#">User:</a> <span class="divider">/</span></li>
-						<li><a href="#"><b>Upload/download Materials</b></a></li>
+						<li><a href="#"><b>Uploads</b></a></li>
 					</ul>
 					<!-- end breadcrumb -->
 
@@ -38,7 +36,7 @@
 								</div>
 								<?php
 								if ($count == '0') { ?>
-									<div class="alert alert-info"><i class="icon-info-sign"></i> No downloadable material currently uploaded.</div>
+									<div class="alert alert-info"><i class="icon-info-sign"></i> No Files available.</div>
 								<?php
 								} else {
 								?>

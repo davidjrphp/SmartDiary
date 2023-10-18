@@ -13,7 +13,7 @@
     h4,
     h5,
     h6 {
-        color: #000;
+        color: #eee;
     }
 
     /* Style the container */
@@ -32,7 +32,7 @@
 
     /* Style the card header */
     .card-header {
-        background-color: #222;
+        background-color: #000;
         border-bottom: none;
     }
 
@@ -65,7 +65,7 @@
 
     /* Style the card title */
     .card-title {
-        font-size: 24px;
+        font-size: 30px;
         font-weight: bold;
         margin-bottom: 5px;
         padding: 10px;

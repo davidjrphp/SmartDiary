@@ -15,7 +15,7 @@
 						<div class="title">
 							<!-- <p class="chmsc">Welcome to</p> -->
 							<h3>
-								SmartDiary
+								<b>SmartDiary</b>
 							</h3>
 						</div>
 

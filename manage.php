@@ -23,16 +23,16 @@
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
-								<div class="alert alert-info"><i class="icon-info"></i> EVENTS MANAGEMENT PAGE </div>
+								<div class="alert alert-info"><i class="icon-info"></i> Manage Events</div>
 								<?php
 								$query = mysqli_query($conn, "select * from event where user_id = '$session_id'") or die(mysqli_error($conn));
 								while ($row = mysqli_fetch_array($query)) {
 								?>
 									<div id="del<?php echo $row['event_id']; ?>" class="alert"><i class="icon-list"></i> <?php echo strtoupper(substr($row['event_title'], 0, 30 - 2) . '&#133'); ?>
 										<i class="alert alert-info">
-											<span class="icon-edit icon-small"> <a id="edit_event" href="edit-event.php?id=<?php echo $session_id; ?>&event=<?php echo $row['event_id']; ?>">EDIT</a></span> |
-											<span class="icon-remove icon-small"> <a class="delete_event" id="<?php echo $row['event_id']; ?>" href="<?php echo $row['event_id']; ?>">DELETE</a></span> |
-											<span> <a onClick="return false;" id="cancel_event" href="<?php echo $row['event_id']; ?>">CANCEL</a></span>
+											<span class="icon-edit icon-small"> <a id="edit_event" href="edit-event.php?id=<?php echo $session_id; ?>&event=<?php echo $row['id']; ?>">EDIT</a></span> |
+											<span class="icon-remove icon-small"> <a class="delete_event" id="<?php echo $row['id']; ?>" href="<?php echo $row['id']; ?>">DELETE</a></span> |
+											<span> <a onClick="return false;" id="cancel_event" href="<?php echo $row['id']; ?>">CANCEL</a></span>
 										</i>
 									</div>
 								<?php } ?>

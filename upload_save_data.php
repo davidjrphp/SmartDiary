@@ -1,172 +1,109 @@
 <?php
-
 include('session.php');
-//Include database connection details
-require("opener_db.php");
+include('admin/dbcon.php');
+
 $errmsg_arr = array();
-//Validation error flag
 $errflag = false;
 
-$uploaded_by_query = mysqli_query($conn, "select * from tbluser where user_id = '$session_id'") or die(mysqli_error($conn));
-$uploaded_by_query_row = mysqli_fetch_array($uploaded_by_query);
-$uploaded_by = $uploaded_by_query_row['firstname'] . "" . $uploaded_by_query_row['lastname'];
+$uploaded_by_query = mysqli_prepare($conn, "SELECT * FROM tbluser WHERE user_id = ?");
+if ($uploaded_by_query) {
+    mysqli_stmt_bind_param($uploaded_by_query, "i", $session_id);
+    mysqli_stmt_execute($uploaded_by_query);
+    $uploaded_by_result = mysqli_stmt_get_result($uploaded_by_query);
+
+    if ($uploaded_by_result && $uploaded_by_row = mysqli_fetch_array($uploaded_by_result)) {
+        $uploaded_by = $uploaded_by_row['firstname'] . " " . $uploaded_by_row['lastname'];
+    } else {
+        $errmsg_arr[] = 'User not found';
+        $errflag = true;
+    }
+    mysqli_stmt_close($uploaded_by_query);
+} else {
+    $errmsg_arr[] = 'Error preparing user data query';
+    $errflag = true;
+}
 
 $id_class = $_POST['id_class'];
 $name = $_POST['name'];
 $get_id = $_POST['id_class'];
 
-//Function to sanitize values received from the form. Prevents SQL injection
-function clean($str)
+function clean($str, $conn)
 {
-    $str = @trim($str);
-    if (get_magic_quotes_gpc()) {
-        $str = stripslashes($str);
-    }
-    return mysqli_real_escape_string($str);
+    $str = trim($str);
+    return mysqli_real_escape_string($conn, $str);
 }
 
-//Sanitize the POST values
 $filedesc = clean($_POST['desc']);
-//$subject= clean($_POST['upname']);
 
 if ($filedesc == '') {
-    $errmsg_arr[] = ' file discription is missing';
+    $errmsg_arr[] = 'File description is missing';
     $errflag = true;
 }
 
 if ($_FILES['uploaded_file']['size'] >= 1048576 * 5) {
-    $errmsg_arr[] = 'file selected exceeds 5MB size limit';
+    $errmsg_arr[] = 'File selected exceeds 5MB size limit';
     $errflag = true;
 }
 
-
-//If there are input validations, redirect back to the registration form
 if ($errflag) {
     $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
     session_write_close();
-?>
-
-    <script>
-        window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-    </script>
-    <?php exit();
+    header("Location: uploads.php?id=$get_id");
+    exit();
 }
-//upload random name/number
+
 $rd2 = mt_rand(1000, 9999) . "_File";
 
-//Check that we have a file
 if ((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 0)) {
-    //Check if the file is JPEG image and it's size is less than 350Kb
     $filename = basename($_FILES['uploaded_file']['name']);
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-    $ext = substr($filename, strrpos($filename, '.') + 1);
-
-    if (($ext != "exe") && ($_FILES["uploaded_file"]["type"] != "application/x-msdownload")) {
-        //Determine the path to which we want to save this file      
-        //$newname = dirname(__FILE__).'/upload/'.$filename;
-        $newname = "admin/uploads/" . $rd2 . "_" . $filename;
-        $name_notification  = 'Add uploads Materials file name' . " " . '<b>' . $name . '</b>';
-        //Check if the file with the same name is already exists on the server
-        if (!file_exists($newname)) {
-            //Attempt to move the uploaded file to it's new place
-            if ((move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $newname))) {
-                //successful upload
-                // echo "It's done! The file has been saved as: ".$newname;		   
-                $qry2 = "INSERT INTO files (fdesc,floc,fdatein,user_id,fname,uploaded_by) VALUES ('$filedesc','$newname',NOW(),'$id_class','$name','$uploaded_by')";
-                $result2 = $connector->query($qry2);
-                if ($result2) {
-                    $errmsg_arr[] = 'record was saved in the database and the file was uploaded';
-                    $errflag = true;
-                    if ($errflag) {
-                        $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-                        session_write_close();
-    ?>
-
-                        <script>
-                            /* 		window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>'; */
-                        </script>
-                    <?php
-
-                        exit();
-                    }
-                } else {
-                    $errmsg_arr[] = 'record was not saved in the database but file was uploaded';
-                    $errflag = true;
-                    if ($errflag) {
-                        $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-                        session_write_close(); ?>
-                        <script>
-                            window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-                        </script>
-                    <?php
-                        exit();
-                    }
-                }
-            } else {
-                //unsuccessful upload
-                //echo "Error: A problem occurred during file upload!";
-                $errmsg_arr[] = 'upload of file ' . $filename . ' was unsuccessful';
-                $errflag = true;
-                if ($errflag) {
-                    $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-                    session_write_close(); ?>
-                    <script>
-                        window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-                    </script>
-
-
-                <?php
-                    exit();
-                }
-            }
-        } else {
-            //existing upload
-            // echo "Error: File ".$_FILES["uploaded_file"]["name"]." already exists";
-            $errmsg_arr[] = 'Error: File >>' . $_FILES["uploaded_file"]["name"] . '<< already exists';
-            $errflag = true;
-            if ($errflag) {
-                $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-                session_write_close(); ?>
-                <script>
-                    window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-                </script>
-            <?php
-
-                exit();
-            }
-        }
-    } else {
-        //wrong file upload
-        //echo "Error: Only .jpg images under 350Kb are accepted for upload";
-        $errmsg_arr[] = 'Error: All file types except .exe file under 5 Mb are not accepted for upload';
+    if (!in_array($ext, array("jpg", "jpeg", "png", "gif", "pdf", "doc", "docx"))) {
+        $errmsg_arr[] = 'Error: Only image, PDF, and Word files are allowed';
         $errflag = true;
-        if ($errflag) {
-            $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-            session_write_close(); ?>
-            <script>
-                window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-            </script>
-        <?php
-            exit();
-        }
     }
-} else {
-    //no file to upload
-    //echo "Error: No file uploaded";
 
-    $errmsg_arr[] = 'Error: No file uploaded';
-    $errflag = true;
     if ($errflag) {
         $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-        session_write_close(); ?>
-        <script>
-            window.location = 'uploads.php<?php echo '?id=' . $get_id;  ?>';
-        </script>
-<?php
+        session_write_close();
+        header("Location: uploads.php?id=$get_id");
         exit();
     }
+
+    $newname = "admin/uploads/" . $rd2 . "_" . $filename;
+
+    if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $newname)) {
+        $qry2 = "INSERT INTO files (fdesc, floc, fdatein, user_id, fname, uploaded_by) VALUES (?, ?, NOW(), ?, ?, ?)";
+
+        $stmt = mysqli_prepare($conn, $qry2);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "ssiss", $filedesc, $newname, $id_class, $name, $uploaded_by);
+
+            if (mysqli_stmt_execute($stmt)) {
+                $errmsg_arr[] = 'The file was uploaded';
+            } else {
+                $errmsg_arr[] = 'Record was not saved in the database, but the file was uploaded';
+            }
+
+            mysqli_stmt_close($stmt);
+        } else {
+            $errmsg_arr[] = 'Error preparing SQL statement';
+        }
+    } else {
+        $errmsg_arr[] = 'Upload of file ' . $filename . ' was unsuccessful';
+    }
+
+    $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+    session_write_close();
+    header("Location: uploads.php?id=$get_id");
+    exit();
+} else {
+    $errmsg_arr[] = 'Error: No file uploaded';
+    $_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+    session_write_close();
+    header("Location: uploads.php?id=$get_id");
+    exit();
 }
 
-
-mysql_close();
-?>
+mysqli_close($conn);

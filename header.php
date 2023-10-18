@@ -2,8 +2,8 @@
 <html class="no-js">
 
 <head>
-	<title>My Smart Diary</title>
-	<meta name="description" content="Diary Management System">
+	<title>SmartDiary</title>
+	<meta name="description" content="SmartDiary">
 	<meta name="author" content="Elifree">
 	<meta charset="UTF-8">
 	<!-- Bootstrap -->
@@ -26,5 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="admin/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css" />
 	<script src="admin/vendors/jquery-1.9.1.min.js"></script>
 	<script src="admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+
 </head>
 <?php include('admin/dbcon.php'); ?>

@@ -1,7 +1,7 @@
 <?php include('header_dashboard.php'); ?>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('navbar.php'); ?><br><br>
     <div class="container-fluid">
         <div class="row-fluid">
             <?php include('calendar_sidebar.php'); ?>
@@ -21,12 +21,12 @@
                         </div>
                         <div class="block-content collapse in">
                             <div class="span12">
-                                <div class="alert alert-info"><i class="icon-info"></i> LIST OF EVENTS CAPTION </div>
+                                <div class="alert alert-info"><i class="icon-info"></i>My Diary Events </div>
                                 <?php
                                 $query = mysqli_query($conn, "select * from event where user_id = '$session_id'") or die(mysqli_error($conn));
                                 while ($row = mysqli_fetch_array($query)) {
                                 ?>
-                                    <a href="read.php?id=<?php echo  $row["event_id"] ?>">
+                                    <a href="read.php?id=<?php echo  $row["id"] ?>">
                                         <div class="alert"><i class="icon-list"></i> <?php echo $row['event_title']; ?> <i class="alert alert-info"><?php echo $row['date_start']; ?></i></div>
                                     </a>
                                 <?php } ?>

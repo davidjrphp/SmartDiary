@@ -4,7 +4,7 @@
         <div id="block_bg" class="block">
             <div class="navbar navbar-inner block-header">
                 <div id="" class="muted pull-left">
-                    <h4><i class="icon-plus-sign"></i> Add Downloadable</h4>
+                    <h4><i class="icon-plus-sign"></i> Add File</h4>
                 </div>
             </div>
             <div class="block-content collapse in">
@@ -53,10 +53,10 @@
                                 var formData = new FormData($(this)[0]);
                                 $.ajax({
                                     type: "POST",
-                                    url: "upload_save_data.php",
+                                    url: "save_uploads.php",
                                     data: formData,
                                     success: function(html) {
-                                        $.jGrowl("Student Successfully  Added", {
+                                        $.jGrowl("File Successfully  Uploaded", {
                                             header: 'Student Added'
                                         });
                                         window.location = 'uploads.php<?php echo '?id=' . $get_id; ?>';
@@ -72,7 +72,5 @@
             </div>
         </div>
         <!-- /block -->
-
-
     </div>
 </div>

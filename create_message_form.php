@@ -16,10 +16,6 @@
 							<a href="message.php">To Friends</a>
 						</li>
 					</ul>
-
-
-
-
 					<form method="post" id="send_message">
 						<div class="control-group">
 							<label>To:</label>
@@ -65,7 +61,7 @@
 									data: formData,
 									success: function(html) {
 										alert(html);
-										$.jGrowl("Message Successfully Sended", {
+										$.jGrowl("Message Sent successfully", {
 											header: 'Message Sent'
 										});
 										var delay = 2000;

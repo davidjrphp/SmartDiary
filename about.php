@@ -26,9 +26,9 @@
                                 ?>
                                 <hr>
                                 <?php
-                                $mission_query = mysqli_query($conn, "select * from content where title  = 'vision' ") or die(mysqli_error($conn));
-                                $mission_row = mysqli_fetch_array($mission_query);
-                                echo $mission_row['content'];
+                                // $mission_query = mysqli_query($conn, "select * from content where title  = 'vision' ") or die(mysqli_error($conn));
+                                // $mission_row = mysqli_fetch_array($mission_query);
+                                // echo $mission_row['content'];
                                 ?>
                             </div>
                         </div>

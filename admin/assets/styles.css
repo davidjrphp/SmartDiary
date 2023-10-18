@@ -85,10 +85,11 @@ body {
 }
 
 .block {
-	background: url("../images/pixel-60fff.png") repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+	/* background: url("../images/pixel-60fff.png") repeat scroll 0 0 rgba(0, 0, 0, 0) !important; */
 	border: 1px solid #ccc;
 	background: white;
 	margin: 1em 0em;
+  color: white;
 	border-top: none;
 	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 6, 0.75);
 	-moz-box-shadow:    2px 2px 5px rgba(0, 0, 6, 0.75);
@@ -98,12 +99,15 @@ body {
 .block-content {
 	margin: 1em;
 	min-height: .25em;
+  color: white;
+
 }
 
 .block-header {
 	margin-bottom: 0px;
 	border-right: none;
 	border-left: none;
+  color: #000;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;

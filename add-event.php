@@ -24,7 +24,7 @@
 							$query = mysqli_query($conn, "select * from event where user_id = '$id'") or die(mysqli_error($conn));
 							$count = mysqli_num_rows($query);
 							?>
-							<div id="" class="muted"><span class="muted pull-left">ALL EVENT IN RECORDES </span><span class="muted  pull-right badge badge-info"><?php echo $count; ?></span></div>
+							<div id="" class="muted"><span class="muted pull-left">ALL EVENTS</span><span class="muted  pull-right badge badge-info"><?php echo $count; ?></span></div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">

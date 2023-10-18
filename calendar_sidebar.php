@@ -14,8 +14,8 @@
 		<li class=""><a href="manage.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-group"></i>&nbsp;Manage Events</a></li>
 		<li class=""><a href="diary.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-book"></i>&nbsp;Diary/contact</a></li>
 		<li class=""><a href="contacts.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-group"></i>&nbsp;Manage Contacts</a></li>
-		<li class=""><a href="message.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-envelope-alt"></i>&nbsp;Message Board</a></li>
-		<li class=""><a href="uploads.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-upload"></i>&nbsp;Upload Materials</a></li>
+		<li class=""><a href="message.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-envelope-alt"></i>&nbsp;Messages</a></li>
+		<li class=""><a href="uploads.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-upload"></i>&nbsp;Uploads</a></li>
 		<li class=""><a href="add-event.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-book"></i>&nbsp;Add Events</a></li>
 		<li class=""><a href="notification.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-info-sign"></i>&nbsp;Notification</a></li>
 		<li class="active"><a href="myevents.php<?php echo '?id=' . $get_id; ?>"><i class="icon-chevron-right"></i><i class="icon-calendar"></i>&nbsp;My Events</a></li>

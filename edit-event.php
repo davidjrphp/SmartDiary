@@ -2,15 +2,11 @@
 <?php
 if (isset($_GET['event'])) {
 	$event_id = $_GET['event'];
-	$query = mysqli_query($conn, "select * from  event where event_id=$event_id") or die(mysqli_error($conn));
+	$query = mysqli_query($conn, "select * from  event where id=$event_id") or die(mysqli_error($conn));
 	$row = mysqli_fetch_array($query);
 	$date_start = $row['date_start'];
 	$date_end = $row['date_end'];
-	$title = $row['event_title'];
-	$note = mysqli_real_escape_string($row['note']);
-
-	$n = explode("VENUE::", $note);
-	$venue = $n[1];
+	// $note = $_POST["note"];
 }
 ?>
 
@@ -18,15 +14,13 @@ if (isset($_GET['event'])) {
 <?php $id = $_GET['id']; ?>
 
 <body>
-	<?php include('navbar.php'); ?>
+	<?php include('navbar.php'); ?><br><br>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<?php include('calendar_sidebar.php'); ?>
 			<div class="span6" id="content">
 				<div class="row-fluid">
 					<!-- breadcrumb -->
-
-
 					<ul class="breadcrumb">
 						<li><a href="#">User:</a> <span class="divider">/</span></li>
 						<li><a href="#">Event:</a> <span class="divider">/</span></li>
@@ -41,7 +35,7 @@ if (isset($_GET['event'])) {
 							$query = mysqli_query($conn, "select * from event where user_id = '$id'") or die(mysqli_error($conn));
 							$count = mysqli_num_rows($query);
 							?>
-							<div id="" class="muted"><span class="muted pull-left">ALL EVENT IN RECORDES </span><span class="muted  pull-right badge badge-info"><?php echo $count; ?></span></div>
+							<div id="" class="muted"><span class="muted pull-left">My Diary Events </span><span class="muted  pull-right badge badge-info"><?php echo $count; ?></span></div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
@@ -49,11 +43,11 @@ if (isset($_GET['event'])) {
 									<?php
 									while ($row = mysqli_fetch_array($query)) {
 									?>
-										<div id="del<?php echo $row['event_id']; ?>" class="alert"><i class="icon-list"></i> <?php echo strtoupper(substr($row['event_title'], 0, 20 - 2) . '&#133'); ?>
+										<div id="del<?php echo $row['id']; ?>" class="alert"><i class="icon-list"></i> <?php echo strtoupper(substr($row['event_title'], 0, 20 - 2) . '&#133'); ?>
 											<i class="alert alert-info">
-												<span class="icon-edit icon-small"> <a id="edit_event" href="edit-event.php?id=<?php echo $session_id; ?>&event=<?php echo $row['event_id']; ?>">EDIT</a></span> |
-												<span class="icon-remove icon-small"> <a class="delete_event" id="<?php echo $row['event_id']; ?>" href="<?php echo $row['event_id']; ?>">DELETE</a></span> |
-												<span> <a onClick="return false;" id="cancel_event" href="<?php echo $row['event_id']; ?>">CANCEL</a></span>
+												<span class="icon-edit icon-small"> <a id="edit_event" href="edit-event.php?id=<?php echo $session_id; ?>&event=<?php echo $row['id']; ?>">EDIT</a></span> |
+												<span class="icon-remove icon-small"> <a class="delete_event" id="<?php echo $row['id']; ?>" href="<?php echo $row['id']; ?>">DELETE</a></span> |
+												<span> <a onClick="return false;" id="cancel_event" href="<?php echo $row['id']; ?>">CANCEL</a></span>
 											</i>
 										</div>
 									<?php } ?>

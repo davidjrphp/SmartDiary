@@ -7,7 +7,7 @@ if (isset($_GET["id"])) {
 ?>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('navbar.php'); ?><br><br>
     <div class="container-fluid">
         <div class="row-fluid">
             <?php include('calendar_sidebar.php'); ?>
@@ -27,7 +27,7 @@ if (isset($_GET["id"])) {
                         </div>
                         <div class="block-content collapse in">
                             <?php
-                            $query = mysqli_query($conn, "select * from event where event_id = '$id'") or die(mysqli_error($conn));
+                            $query = mysqli_query($conn, "select * from event where id = '$id'") or die(mysqli_error($conn));
                             $row = mysqli_fetch_array($query);
                             ?>
                             <div class="span12">

@@ -55,7 +55,7 @@
 											$reciever_name = $row['reciever_name'];
 									?>
 											<div class="post" id="del<?php echo $id; ?>">
-												<div class="message_content">
+												<div class="message_content" style="color: black">
 													<?php echo $row['content']; ?>
 												</div>
 												<div class="pull-right">
@@ -65,8 +65,8 @@
 													<?php } ?>
 												</div>
 												<hr>
-												Send by: <strong><?php echo $row['sender_name']; ?></strong>
-												<i class="icon-calendar"></i> <?php echo $row['date_sended']; ?>
+												<h5 style="color: blue">From:</h5> <strong style="color: black"><?php echo $row['sender_name']; ?></strong>
+												<i class="icon-calendar" style="color: black"> <?php echo $row['date_sended']; ?></i>
 												<div class="pull-right">
 													<a id="reply_msg" class="btn btn-link" href="#reply<?php echo $id; ?>" data-toggle="modal"><i class="icon-reply"></i> Reply </a>
 												</div>
@@ -77,7 +77,7 @@
 
 										<?php }
 									} else { ?>
-										<div class="alert alert-info"><i class="icon-info-sign"></i> No Message Inbox</div>
+										<div class="alert alert-info"><i class="icon-info-sign"></i> No Message</div>
 									<?php } ?>
 								</form>
 							</div>
