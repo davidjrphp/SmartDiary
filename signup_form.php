@@ -8,9 +8,6 @@
 				<textarea class="input-block-level" id="about" name="about" placeholder="about me" required></textarea>
 				<button id="signin" name="login" class="btn btn-info" type="submit"><i class="icon-check icon-large"></i> Sign up</button>
 			</form>
-
-
-
 			<script>
 				jQuery(document).ready(function() {
 					jQuery("#signup_user").submit(function(e) {
@@ -51,7 +48,4 @@
 					});
 				});
 			</script>
-
-
-
 			<a onclick="window.location='index.php'" id="btn_login" name="login" class="btn" type="submit"><i class="icon-signin icon-large"></i> Click here to Login</a>
